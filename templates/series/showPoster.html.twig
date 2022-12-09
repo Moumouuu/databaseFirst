@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Series{% endblock %}
+
+{% block body %}
+    <h1>Poster from {{series.title}}</h1>
+    
+    <a href="{{ path('series') }}">back to list</a>
+
+{% endblock %}

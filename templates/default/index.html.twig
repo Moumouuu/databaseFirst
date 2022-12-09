@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!
+{% endblock %}
+
+{% block body %}
+
+	{% if app.user %}
+		<h1>Hello
+			{{app.user.name}}</h1>
+		<a href="{{path('app_logout')}}">Logout</a>
+		<a href="{{path('seriesFollowed')}}">mySeries</a>
+	{% else %}
+		<h1>Bonjour</h1>
+		<a href="{{path('app_login')}}">Login</a>
+		<a href="{{path('app_register')}}">SignIn</a>
+
+	{% endif %}
+	<a href="{{path('series')}}">Series</a>
+{% endblock %}

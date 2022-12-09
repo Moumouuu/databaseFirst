@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Series
+{% endblock %}
+
+{% block body %}
+	<h1>Series</h1>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ series.id }}</td>
+			</tr>
+			<tr>
+				<th>Title</th>
+				<td>{{ series.title }}</td>
+			</tr>
+			<tr>
+				<th>Plot</th>
+				<td>{{ series.plot }}</td>
+			</tr>
+			<tr>
+				<th>Imdb</th>
+				<td>{{ series.imdb }}</td>
+			</tr>
+			<tr>
+				<th>Poster</th>
+				<td>{{ series.poster }}</td>
+			</tr>
+			<tr>
+				<th>Director</th>
+				<td>{{ series.director }}</td>
+			</tr>
+			<tr>
+				<th>YoutubeTrailer</th>
+				<td>{{ series.youtubeTrailer }}</td>
+			</tr>
+			<tr>
+				<th>Awards</th>
+				<td>{{ series.awards }}</td>
+			</tr>
+			<tr>
+				<th>YearStart</th>
+				<td>{{ series.yearStart }}</td>
+			</tr>
+			<tr>
+				<th>YearEnd</th>
+				<td>{{ series.yearEnd }}</td>
+			</tr>
+			<tr>
+				<th>Season</th>
+				{% for s in seasons %}
+					<td>{{ s.number }}
+					</td>
+				{% endfor %}
+			</tr>
+		</tbody>
+	</table>
+	{% if app.user %}
+		{% if app.user.series.contains(series) %}
+			<a href="{{path('seriesIdFollow',{'id':series.id})}}">unLike</a>
+		{% else %}
+			<a href="{{path('seriesIdFollow',{'id':series.id})}}">Like</a>
+		{% endif %}
+	{% endif %}
+	<a href="{{ path('series') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Series index
+{% endblock %}
+
+{% block body %}
+	<h1>My series</h1>
+	<ul>
+		{% for serie in series %}
+			{% if app.user.series.contains(serie) %}
+				<li>{{serie.title}}</li>
+			{% endif %}
+		{% endfor %}
+	</ul>
+	<a href="{{path('home')}}">back home</a>
+{% endblock %}
